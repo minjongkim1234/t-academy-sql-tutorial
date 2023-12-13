@@ -115,6 +115,8 @@ SELECT STR_TO_DATE('2019-02-14', '%Y-%m-%d');
 SELECT STR_TO_DATE('2019/02/14', '%Y/%m/%d');
 SELECT STR_TO_DATE('20190214', '%Y%m%d');
 
+SELECT STR_TO_DATE('2023-12-13', '%Y-%m-%d');
+
 ### 날짜 -> 문자열로 바꾸는 함수 DATE_FORMAT(date, 포맷)
 SELECT DATE_FORMAT('2019-02-14', '%Y-%m-%d');
 SELECT DATE_FORMAT('2019-02-14', '%Y/%m/%d');

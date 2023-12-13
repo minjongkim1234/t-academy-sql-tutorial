@@ -135,6 +135,11 @@ ALTER TABLE NewBook DROP isbn;
 -- NewBook 테이블의 bookid 속성에 NOT NULL 제약조건을 적용하시오.
 ALTER TABLE NewBook MODIFY bookid INTEGER NOT NULL;
 
+
+SELECT * FROM Imported_Book;
+ALTER TABLE Imported_Book MODIFY publisher INTEGER;
+ALTER TABLE Imported_Book MODIFY bookid VARCHAR(5);
+
 /*
 CREATE TABLE NewBook (
     bookid INTEGER
