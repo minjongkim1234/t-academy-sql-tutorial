@@ -10,11 +10,11 @@ USE instacart;
 ## 주문 건당 평균 구매 상품 수(UPT, Unit Per Transaction)
 ## 인당 평균 주문 건수
 ## 재구매율이 가장 낮은 상품 3위까지
-## Department별 재구매 수가 가장 많은 상품
+## Department별 재구매 수가 가장 많은 상품 (WITH, DENSE_RANK, OVER, PARTITION 활용 문제, )
 
 # 구매자 분석
-## 유저별 10분위 구하기
-## 각 분위수의 주문 건수
+## 유저별 10분위 구하기 (ROW_NUMBER, OVER, )
+## 각 분위수의 주문 건수 ( ROW_NUMBER )
 ## VIP 구매 비중
 
 # 상품 분석

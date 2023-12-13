@@ -329,7 +329,9 @@ SELECT sum(saleprice) FROM Orders;
 SELECT custid FROM Orders;
 
 -- 4-12 마당서점의 고객별 판매액을 보이시오(고객이름과 고객별 판매액을 출력).
-SELECT (SELECT name 
+USE madang;
+SELECT * from Customer; 
+SELECT (SELECT name, 
         FROM Customer cs 
         WHERE cs.custid=od.custid) 'name', SUM(saleprice) 'total'
         

@@ -4,11 +4,7 @@ JOIN 관련 질의
 
 USE hr;
 
--- 이제까지 했던 조인은 INNER JOIN(EQUAL JOIN이라고도 한다)
--- CROSS JOIN(Cartesian Product)은 join조건을 기술하지 않은 경우 발생
-
--- SELF JOIN: 동일한 TABLE을 JOIN하는 경우
--- hr테이블의 EMP에는 직원 정보가 저장되어있다. 
+-- 
 -- BLAKE가 관리하는(Blake가 매니저인) 직원의 이름과 직급을 출력하시오
 ;
 
