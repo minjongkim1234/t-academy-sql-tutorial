@@ -62,6 +62,18 @@ LEFT JOIN Orders as O
 ;
 -- 고객별로 책 구매에 얼마를 지출하였는지를 구하시오. 쿼리결과에 구매내역없는 고객도 포함되어야 함.
 -- 첫번째열 고객아이디, 두번째열 이름, 세번째열 책구매에 지출한 금액
+SELECT C.custid, C.name, SUM(saleprice)
+FROM Customer as C
+LEFT JOIN Orders as O
+    ON C.custid = O.custid
+GROUP BY C.custid, C.name
+;
+
+;
+select *
+from Orders
+order by bookid
+;
 
 -- FULL OUTER JOIN
 -- 누가 어떤 책을 샀는지를 보여주세요. 첫번째 열에는 고객의 이름, 두번째열에는 책의 이름이 나와야 합니다.
@@ -69,7 +81,28 @@ LEFT JOIN Orders as O
 -- MYSQL은 FULL JOIN이라는 문법을 지원하지 않습니다.
 -- 대신 UNION을 써서 FULL JOIN을 합니다.
 
-
+SELECT 
+    C.name, (SELECT B.bookname 
+            FROM Book as B 
+            WHERE O.bookid = B.bookid)
+FROM 
+    Orders as O
+RIGHT JOIN 
+    Customer as C
+ON
+    O.custid = C.custid
+UNION ALL
+SELECT
+    (SELECT C.name 
+    FROM Customer as C 
+    WHERE O.custid = C.custid), B.bookname
+FROM 
+    Orders as O
+RIGHT JOIN 
+    Book as B
+ON 
+    O.bookid = B.bookid
+;
 
 -- UNION (합집합 개념)
 /*
@@ -77,15 +110,31 @@ LEFT JOIN Orders as O
 (=대한민국에 거주하는 고객의 이름과 도서를 주문한 고객의 이름을 보이시오) OR
 (!=대한민국에 거주하 도서를 주문한 고객의 이름을 보이시오)
 */
+SELECT name
+FROM Customer
+WHERE address LIKE '%대한민국%'
+;
+SELECT distinct name
+FROM Orders as O, Customer as C
+WHERE O.custid = C.custid
+;
+
 
 ;
 # UNION 사용해서 풀어보세요
+SELECT name
+FROM Customer
+WHERE address LIKE '%대한민국%'
+UNION
+SELECT distinct name
+FROM Orders as O, Customer as C
+WHERE O.custid = C.custid
 ;
 -- UNION ALL (UNION과 동일하지만 중복을 포함함)
-
-
-
-
-
-
-
+SELECT name
+FROM Customer
+WHERE address LIKE '%대한민국%'
+UNION ALL
+SELECT distinct name
+FROM Orders as O, Customer as C
+WHERE O.custid = C.custid
